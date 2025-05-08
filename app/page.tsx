@@ -19,15 +19,31 @@ export default function Home() {
 
   let str1: string = "bochi";
   // str1=12
-  //  str1 has string type  => type annotation 
+  //  str1 has string type  => type annotation
 
-  let isUser:boolean=true     
-  isUser=false
+  let isUser: boolean = true;
+  isUser = false;
   // isUser=0
   //  type of isUser is boolean that defined with type annotation
 
+  let user = {
+    id: 0,
+  };
+  // user.age=22  we have error
+
+  let user1 = {
+    id: 1,
+    age: 12,
+  };
+  user1.age = 22;
+  // we dont have error //type inference
+
+  const user3: { id: number; age: number } = { id: 2, age: 34 };
+  // type annotation 
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"></div>
+    <div>
+      <h1>learning typescript</h1>
+    </div>
   );
 }
