@@ -61,10 +61,22 @@ export default function Home() {
   arr3.push([2]);
   // console.log(arr3)
 
-  const arr4 :(string|number)[][]=[]
+  const arr4: (string | number)[][] = [];
   // arr3.push("mina")
-  arr4.push([2,"bochi"]);
-  console.log(arr4[0][0])
+  arr4.push([2, "bochi"]);
+  // console.log(arr4[0][0])
+
+  const role = [[0, "admin"]];
+  // role.push([1, false]); we have error
+
+  const role1 = [[0, "admin"]];
+  role1.push(["user", 1]);
+  // if we wanted to push array that its first item is number and its second item is string we shold use tuple
+
+  const role3: [[number, string]] = [[0, "admin"]];
+  // role3.push([1, "user"]);
+  // role3.push([1, "user",12]); we can not push values other than number and string types and more than 2 parameter
+  console.log(role3);
 
   return (
     <div>
