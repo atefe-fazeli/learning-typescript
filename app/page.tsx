@@ -78,6 +78,16 @@ export default function Home() {
   // role3.push([1, "user",12]); we can not push values other than number and string types and more than 2 parameter
   console.log(role3);
 
+  function showUser(name: string, age: number) {
+    console.log(name, age);
+  }
+  // showUser(false,12)  we have error beacuse values are not match
+
+  // function showUser1(name,age) {
+  //   console.log(name, age);
+  // }
+  // showUser1("atefe", 20);  we have error beacuse we do not define type
+
   return (
     <div>
       <h1>learning typescript</h1>
