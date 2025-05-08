@@ -21,6 +21,10 @@ export default function Home() {
   // str1=12
   //  str1 has string type  => type annotation 
 
+  let isUser:boolean=true     
+  isUser=false
+  // isUser=0
+  //  type of isUser is boolean that defined with type annotation
 
 
   return (
