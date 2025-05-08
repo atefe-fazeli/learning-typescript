@@ -52,7 +52,20 @@ export default function Home() {
   const arr2: (string | number | boolean)[] = [];
   arr2.push(true);
   // define an array with annotation type .we can push string number and boolean values
-  
+
+  const arr3 = [
+    [0, { id: 0, skills: [] }],
+    [1, { id: 1, skills: [] }],
+  ];
+  // arr3.push("mina")
+  arr3.push([2]);
+  // console.log(arr3)
+
+  const arr4 :(string|number)[][]=[]
+  // arr3.push("mina")
+  arr4.push([2,"bochi"]);
+  console.log(arr4[0][0])
+
   return (
     <div>
       <h1>learning typescript</h1>
