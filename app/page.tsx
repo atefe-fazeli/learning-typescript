@@ -39,8 +39,20 @@ export default function Home() {
   // we dont have error //type inference
 
   const user3: { id: number; age: number } = { id: 2, age: 34 };
-  // type annotation 
+  // type annotation
 
+  const arr = ["bochi", 12, false];
+  arr.push(true);
+  // define an array with inference type
+
+  const arr1: string[] = [];
+  // arr1.push(true); we have an error beacuse we can not push boolean values
+  // define an array with annotation type
+
+  const arr2: (string | number | boolean)[] = [];
+  arr2.push(true);
+  // define an array with annotation type .we can push string number and boolean values
+  
   return (
     <div>
       <h1>learning typescript</h1>
