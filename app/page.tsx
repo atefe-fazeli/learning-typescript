@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import Image from "next/image";
 
 export default function Home() {
@@ -89,8 +90,44 @@ export default function Home() {
   // showUser1("atefe", 20);  we have error beacuse we do not define type
 
   return (
-    <div>
+    <div className="flex flex-col gap-y-4 m-7">
       <h1>learning typescript</h1>
+      <Button disabled={true} type="button" variant="primary">
+        <div className="flex gap-x-2 items-center">
+          {" "}
+          <span>* </span> <span>Click me</span>{" "}
+        </div>{" "}
+      </Button>
+      <Button disabled={false} type="button" variant="primary">
+        <div className="flex gap-x-2 items-center">
+          {" "}
+          <span>* </span> <span>Click me</span>{" "}
+        </div>{" "}
+      </Button>
+      <Button disabled={true} type="button" variant="secondary">
+        <div className="flex gap-x-2 items-center">
+          {" "}
+          <span>* </span> <span>Click me</span>{" "}
+        </div>{" "}
+      </Button>
+      <Button disabled={false} type="button" variant="secondary">
+        <div className="flex gap-x-2 items-center">
+          {" "}
+          <span>* </span> <span>Click me</span>{" "}
+        </div>{" "}
+      </Button>
+      <Button disabled={false} type="button" variant="outline">
+        <div className="flex gap-x-2 items-center">
+          {" "}
+          <span>* </span> <span>Click me</span>{" "}
+        </div>{" "}
+      </Button>
+      <Button disabled={true} type="button" variant="outline">
+        <div className="flex gap-x-2 items-center">
+          {" "}
+          <span>* </span> <span>Click me</span>{" "}
+        </div>{" "}
+      </Button>
     </div>
   );
 }
