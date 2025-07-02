@@ -27,10 +27,10 @@ export default function Home() {
   // isUser=0
   //  type of isUser is boolean that defined with type annotation
 
-  let user = {
-    id: 0,
-  };
-  // user.age=22  
+  // let user = {
+  //   id: 0,
+  // };
+  // user.age=22
 
   let user1 = {
     id: 1,
@@ -89,35 +89,73 @@ export default function Home() {
   // }
   // showUser1("atefe", 20);  we have error beacuse we do not define type
 
-
   ////////////////////////////Indexed Access Types — استخراج نوع یک پراپرتی تودرتو
-type Car = {
-  make: string;
-  model: string;
-  specs: {
-    engine: string;
-    year: number;
+
+  type Car = {
+    make: string;
+    model: string;
+    specs: {
+      engine: string;
+      year: number;
+    };
   };
+  const cars: Car[] = [
+    /*...*/
+  ];
+  type CarYearType = Car["specs"]["year"]; ////الان نوع رو استخراج کردی که نامبر هست.
+
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  ///Mapped Types و Readonly — تبدیل همه پراپرتی‌های Car به readonly
+
+  type ReadonlyCar<Car> = {
+    readonly [Property in keyof Car]: Car[Property];
+  };
+
+///////////////////////////////////////////////////////////////////////////////////
+//۳. Conditional + Infer — استخراج نوع بازگشتی Promise یک تابع
+///اگه T یک تابع باشه (هر تابعی)، نگاه کن خروجیش چیه (infer R)
+/// خروجی never میشه (یعنی معتبر نبود).
+///infer = “بفهم نوع چیه و بسپار به متغیّر تایپی”
+//T extends (…args: any[]) => Promise<infer R>
+//اگر T یک تابع باشد که Promise برمی‌گرداند، R همان نوع Value داخل Promise است.
+//ساده‌ترین جمله برای آدم صفر:
+//این کار باعث میشه بدون این که خودت دستی بنویسی “نوع خروجی این Promise چیه”، تایپ‌اسکریپت خودش بفهمه و بدهت.
+  type ReturnTypeOfPromise<T> = T extends (...args: any[]) => Promise<infer R>
+    ? R
+    : never;
+
+  type Example = () => Promise<number>;
+  type X = ReturnTypeOfPromise<Example>; // X باید number باشه
+  function foo(): Promise<string> {
+  return Promise.resolve("hello");
 }
-const cars: Car[] = [/*...*/];
-type CarYearType=Car["specs"]["year"]
-  ////////////////////////////Indexed Access Types — استخراج نوع یک پراپرتی تودرتو
+type Y=ReturnTypeOfPromise<typeof foo>
+///////////////////////////////////////////////////////////////////////////////////
 
+//۷. تمرین سریع: typeof و keyof
+//سؤال زیر رو اجرا کن و نوع هرکدوم رو بنویس:
 
-type CreateMutable<Type> = {
-  -readonly [Property in keyof Type]: Type[Property];
-};
-
-
-type ReadonlyCar = CreateMutable<Car>;
-console.log(ReadonlyCar,"ReadonlyCar")
-
-type ReturnTypeOfPromise<T>={
-return T<Number>
+const user = {
+  name: "Alice",
+  age: 21
 }
+// type User = typeof user;
+// type UserKeys = keyof User;
+// type NameType = User["name"];
 
-type Example = () => Promise<number>
-type X = ReturnTypeOfPromise<Example> // X باید number باشه
+// type User = { name: string; age: number }
+// type UserKeys = "name" | "age"
+// type NameType = string
+//توضیح:
+//typeof از روی مقدار real یک type می‌سازد.
+//keyof کلیدهای تایپ را به صورت یک یونین برمی‌گرداند.
+//User["name"] یعنی نوع پراپرتی name از User را بده (که string بود).
+
+
+
+
+
 
   return (
     <div className="flex flex-col gap-y-4 m-7">
