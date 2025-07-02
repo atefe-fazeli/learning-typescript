@@ -30,7 +30,7 @@ export default function Home() {
   let user = {
     id: 0,
   };
-  // user.age=22  we have error
+  // user.age=22  
 
   let user1 = {
     id: 1,
@@ -75,7 +75,7 @@ export default function Home() {
   // if we wanted to push array that its first item is number and its second item is string we shold use tuple
 
   const role3: [[number, string]] = [[0, "admin"]];
-  // role3.push([1, "user"]);
+  role3.push([1, "user"]);
   // role3.push([1, "user",12]); we can not push values other than number and string types and more than 2 parameter
   console.log(role3);
 
@@ -88,6 +88,36 @@ export default function Home() {
   //   console.log(name, age);
   // }
   // showUser1("atefe", 20);  we have error beacuse we do not define type
+
+
+  ////////////////////////////Indexed Access Types — استخراج نوع یک پراپرتی تودرتو
+type Car = {
+  make: string;
+  model: string;
+  specs: {
+    engine: string;
+    year: number;
+  };
+}
+const cars: Car[] = [/*...*/];
+type CarYearType=Car["specs"]["year"]
+  ////////////////////////////Indexed Access Types — استخراج نوع یک پراپرتی تودرتو
+
+
+type CreateMutable<Type> = {
+  -readonly [Property in keyof Type]: Type[Property];
+};
+
+
+type ReadonlyCar = CreateMutable<Car>;
+console.log(ReadonlyCar,"ReadonlyCar")
+
+type ReturnTypeOfPromise<T>={
+return T<Number>
+}
+
+type Example = () => Promise<number>
+type X = ReturnTypeOfPromise<Example> // X باید number باشه
 
   return (
     <div className="flex flex-col gap-y-4 m-7">
