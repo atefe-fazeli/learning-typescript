@@ -241,45 +241,53 @@ printArea(circle); // => 78.53981633974483
 printArea(square); // => 16
 
 
+
+
+// Parent Class
+class Person {
+  constructor(public name: string) {}
+
+  greet() {
+    console.log(`Hello, I'm ${this.name}`);
+  }
+}
+
+// First Interface
+interface Workable {
+  work(): void;
+}
+
+// Second Interface
+interface Reportable {
+  report(): string;
+}
+
+// Child class that EXTENDS a class and IMPLEMENTS multiple interfaces
+class Employee extends Person implements Workable, Reportable {
+  constructor(name: string, private role: string) {
+    super(name);
+  }
+
+  work() {
+    console.log(`${this.name} is working as a ${this.role}.`);
+  }
+
+  report() {
+    return `${this.name} submitted a performance report.`;
+  }
+}
+
+// Usage
+const emp = new Employee("Aati", "Frontend Developer");
+emp.greet();
+emp.work();
+console.log(emp.report());
+
+
   return (
     <div className="flex flex-col gap-y-4 m-7">
       <h1>learning typescript</h1>
-      <Button disabled={true} type="button" variant="primary">
-        <div className="flex gap-x-2 items-center">
-          {" "}
-          <span>* </span> <span>Click me</span>{" "}
-        </div>{" "}
-      </Button>
-      <Button disabled={false} type="button" variant="primary">
-        <div className="flex gap-x-2 items-center">
-          {" "}
-          <span>* </span> <span>Click me</span>{" "}
-        </div>{" "}
-      </Button>
-      <Button disabled={true} type="button" variant="secondary">
-        <div className="flex gap-x-2 items-center">
-          {" "}
-          <span>* </span> <span>Click me</span>{" "}
-        </div>{" "}
-      </Button>
-      <Button disabled={false} type="button" variant="secondary">
-        <div className="flex gap-x-2 items-center">
-          {" "}
-          <span>* </span> <span>Click me</span>{" "}
-        </div>{" "}
-      </Button>
-      <Button disabled={false} type="button" variant="outline">
-        <div className="flex gap-x-2 items-center">
-          {" "}
-          <span>* </span> <span>Click me</span>{" "}
-        </div>{" "}
-      </Button>
-      <Button disabled={true} type="button" variant="outline">
-        <div className="flex gap-x-2 items-center">
-          {" "}
-          <span>* </span> <span>Click me</span>{" "}
-        </div>{" "}
-      </Button>
+
     </div>
   );
 }
